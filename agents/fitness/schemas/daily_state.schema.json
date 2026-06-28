@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "daily_state.schema.json",
+  "title": "Fitness Daily State",
+  "type": "object",
+  "additionalProperties": false,
+    "required": ["version", "date", "day_type", "training", "nutrition", "recovery", "emotion", "special_context", "plan_status", "workouts"],
+  "properties": {
+    "version": { "type": "integer", "const": 1 },
+    "date": { "type": ["string", "null"] },
+    "day_type": {
+      "type": "string",
+      "enum": ["training_day", "cardio_day", "rest_day", "recovery_day", "special_day", "unknown"]
+    },
+    "plan_status": {
+      "type": "string",
+      "enum": ["not_generated", "generated", "adjusted"]
+    },
+    "training": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["planned", "type", "time", "intensity", "actual_intensity", "status", "post_workout_meal_status"],
+      "properties": {
+        "planned": { "type": "boolean" },
+        "type": {
+          "type": "string",
+          "enum": ["glutes", "legs", "shoulders", "back", "cardio", "full_body", "unknown", "none"]
+        },
+        "time": {
+          "type": "string",
+          "enum": ["morning", "noon", "afternoon", "evening", "unknown"]
+        },
+        "intensity": {
+          "type": "string",
+          "enum": ["low", "medium", "high", "unknown"]
+        },
+        "actual_intensity": {
+          "type": "string",
+          "enum": ["low", "medium", "high", "unknown"]
+        },
+        "status": {
+          "type": "string",
+          "enum": ["planned", "completed", "skipped", "adjusted", "unknown"]
+        },
+        "post_workout_meal_status": {
+          "type": "string",
+          "enum": ["not_needed", "suggested", "eaten", "skipped", "unknown"]
+        }
+      }
+    },
+    "nutrition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["calorie_budget", "calories_consumed", "calories_remaining", "calorie_budget_status", "protein_target_g", "protein_consumed_g", "protein_gap_g", "last_meal_time", "meals"],
+      "properties": {
+        "calorie_budget": { "type": ["number", "null"], "minimum": 0 },
+        "calories_consumed": { "type": "number", "minimum": 0 },
+        "calories_remaining": { "type": ["number", "null"] },
+        "calorie_budget_status": {
+          "type": "string",
+          "enum": ["under", "on_track", "near_limit", "over", "unknown"]
+        },
+        "protein_target_g": { "type": ["number", "null"], "minimum": 0 },
+        "protein_consumed_g": { "type": "number", "minimum": 0 },
+        "protein_gap_g": { "type": ["number", "null"], "minimum": 0 },
+        "last_meal_time": { "type": ["string", "null"] },
+        "meals": { "type": "array", "items": { "type": "object" } }
+      }
+    },
+    "recovery": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sleep_quality": { "type": "string", "enum": ["good", "normal", "poor", "unknown"] },
+        "fatigue": { "type": "string", "enum": ["low", "medium", "high", "unknown"] },
+        "pain_or_soreness": { "type": "array", "items": { "type": "string" } },
+        "recovery_need": { "type": "string", "enum": ["low", "medium", "high", "unknown"] }
+      }
+    },
+    "emotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mood": { "type": "string", "enum": ["stable", "anxious", "irritable", "tired", "guilty", "unknown"] },
+        "lapse_risk": { "type": "string", "enum": ["low", "medium", "high", "unknown"] }
+      }
+    },
+    "special_context": { "type": "array", "items": { "type": "string" } },
+    "workouts": { "type": "array", "items": { "type": "object" } }
+  }
+}

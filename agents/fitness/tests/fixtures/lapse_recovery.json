@@ -1,0 +1,42 @@
+{
+  "name": "lapse_recovery",
+  "initial_state": {
+    "daily_state": {
+      "day_type": "special_day",
+      "nutrition": {
+        "calorie_budget": 1600,
+        "calories_consumed": 1900,
+        "calories_remaining": -300,
+        "calorie_budget_status": "over",
+        "protein_target_g": 80,
+        "protein_consumed_g": 50,
+        "protein_gap_g": 30,
+        "meals": []
+      },
+      "emotion": {
+        "mood": "unknown",
+        "lapse_risk": "unknown"
+      },
+      "special_context": []
+    }
+  },
+  "user_input": "我今天吃爆了，不想记了。",
+  "expected_intent": "lapse_recovery",
+  "expected_state_update": {
+    "emotion.lapse_risk": "high",
+    "emotion.mood": "guilty",
+    "special_context.includes": "lapse_recovery"
+  },
+  "expected_reply_points": [
+    "不用补齐所有记录",
+    "从下一餐",
+    "正常吃三餐",
+    "不建议极端节食"
+  ],
+  "forbidden_reply_points": [
+    "不自律",
+    "今天失败",
+    "明天不吃",
+    "惩罚性运动"
+  ]
+}

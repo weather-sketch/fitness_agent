@@ -1,0 +1,51 @@
+{
+  "name": "training_day",
+  "initial_state": {
+    "daily_state": {
+      "day_type": "unknown",
+      "training": {
+        "planned": false,
+        "type": "unknown",
+        "time": "unknown",
+        "intensity": "unknown",
+        "actual_intensity": "unknown",
+        "status": "unknown",
+        "post_workout_meal_status": "unknown"
+      },
+      "nutrition": {
+        "calorie_budget": 1600,
+        "calories_consumed": 0,
+        "calories_remaining": 1600,
+        "protein_target_g": 80,
+        "protein_consumed_g": 0,
+        "protein_gap_g": 80,
+        "meals": []
+      },
+      "recovery": {
+        "sleep_quality": "unknown",
+        "fatigue": "unknown",
+        "pain_or_soreness": [],
+        "recovery_need": "unknown"
+      },
+      "special_context": []
+    }
+  },
+  "user_input": "今天晚上练臀，怎么吃？",
+  "expected_intent": "daily_plan",
+  "expected_state_update": {
+    "day_type": "training_day",
+    "training.type": "glutes",
+    "training.time": "evening"
+  },
+  "expected_reply_points": [
+    "下肢/臀腿训练日",
+    "练前",
+    "练后",
+    "轻碳水"
+  ],
+  "forbidden_reply_points": [
+    "空腹硬练",
+    "不吃饭补偿",
+    "惩罚"
+  ]
+}

@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# macOS
+.DS_Store
+
+# Local user state / private data
+agents/fitness/data/*.json
+agents/fitness/data/users/*
+!agents/fitness/data/users/.gitkeep
+agents/fitness/data_backups/
+agents/fitness/demo_data/
+agents/fitness/demo_outputs/
+
+# Logs
+agents/fitness/logs/*
+!agents/fitness/logs/.gitkeep
+!agents/fitness/logs/scheduler/
+!agents/fitness/logs/scheduler/.gitkeep
+
+# Local delivery / scheduler outputs
+outputs/
+agents/fitness/outputs/
+
+# Env / secrets
+.env
+*.env
+*.secret
+*.token
+credentials/
+secrets/
+
+# OpenClaw local credentials/config dumps
+.openclaw/
+openclaw-weixin/
+*delivery_config.json
+*scheduler_config.json
+*context-tokens.json
+*recall_outbox.json

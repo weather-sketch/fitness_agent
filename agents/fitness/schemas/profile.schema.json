@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "profile.schema.json",
+  "title": "Fitness Profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "user_id", "goal", "metrics", "preferences", "updated_at"],
+  "properties": {
+    "version": { "type": "integer", "const": 1 },
+    "user_id": { "type": "string" },
+    "goal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary", "strategy"],
+      "properties": {
+        "primary": {
+          "type": "string",
+          "enum": ["fat_loss", "body_shaping", "maintenance", "muscle_gain", "unknown"]
+        },
+        "strategy": {
+          "type": "string",
+          "enum": ["moderate_deficit", "maintenance", "flexible", "unknown"]
+        },
+        "notes": { "type": "string" }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "height_cm": { "type": ["number", "null"], "minimum": 0 },
+        "weight_kg": { "type": ["number", "null"], "minimum": 0 },
+        "daily_calorie_target": { "type": ["number", "null"], "minimum": 0 },
+        "protein_target_g": { "type": ["number", "null"], "minimum": 0 }
+      }
+    },
+    "preferences": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "food_likes": { "type": "array", "items": { "type": "string" } },
+        "food_dislikes": { "type": "array", "items": { "type": "string" } },
+        "training_focus": { "type": "array", "items": { "type": "string" } },
+        "feedback_style": {
+          "type": "string",
+          "enum": ["gentle", "direct", "minimal", "unknown"]
+        },
+        "food_avoidance": { "type": "array", "items": { "type": "object" } },
+        "food_preference": { "type": "array", "items": { "type": "object" } },
+        "workout_preference": { "type": "array", "items": { "type": "object" } },
+        "feedback_style_rules": { "type": "object" },
+        "routine": { "type": "array", "items": { "type": "object" } },
+        "safety_boundaries": { "type": "array", "items": { "type": "object" } }
+      }
+    },
+    "updated_at": { "type": ["string", "null"] }
+  }
+}

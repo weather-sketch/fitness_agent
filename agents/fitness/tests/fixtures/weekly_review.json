@@ -1,0 +1,36 @@
+{
+  "name": "weekly_review",
+  "initial_state": {
+    "cycle_state": {
+      "week_start_date": "2026-06-15",
+      "workout_completed_count": 3,
+      "meal_logging_days": 4,
+      "over_budget_days": 1,
+      "recovery_success_count": 1,
+      "special_context_count": {
+        "聚餐": 1
+      },
+      "possible_patterns": [
+        "睡眠不足后更容易想吃甜食"
+      ],
+      "weekly_wins": [
+        "聚餐后第二天恢复记录"
+      ],
+      "next_week_focus": "训练日下午提前安排轻量加餐"
+    }
+  },
+  "user_input": "这周怎么样？",
+  "expected_intent": "weekly_review",
+  "expected_state_update": {},
+  "expected_reply_points": [
+    "完成了 3 次训练",
+    "饮食记录 4 天",
+    "值得肯定",
+    "下周先只抓一个小动作"
+  ],
+  "forbidden_reply_points": [
+    "你又",
+    "不自律",
+    "前功尽弃"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "meal_log",
+  "initial_state": {
+    "daily_state": {
+      "nutrition": {
+        "calorie_budget": 1600,
+        "calories_consumed": 0,
+        "calories_remaining": 1600,
+        "protein_target_g": 80,
+        "protein_consumed_g": 0,
+        "protein_gap_g": 80,
+        "meals": []
+      }
+    }
+  },
+  "user_input": "中午吃了一碗牛肉面。",
+  "expected_intent": "log_meal",
+  "expected_state_update": {
+    "nutrition.meals.length_min": 1,
+    "nutrition.calories_consumed_min": 600,
+    "nutrition.calorie_budget_status": "on_track"
+  },
+  "expected_reply_points": [
+    "600-850 kcal",
+    "蛋白质",
+    "剩余"
+  ],
+  "forbidden_reply_points": [
+    "多少克",
+    "失败",
+    "不自律"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "name": "post_workout",
+  "initial_state": {
+    "daily_state": {
+      "training": {
+        "planned": true,
+        "type": "glutes",
+        "time": "evening",
+        "intensity": "high",
+        "actual_intensity": "unknown",
+        "status": "planned",
+        "post_workout_meal_status": "unknown"
+      },
+      "nutrition": {
+        "calorie_budget": 1600,
+        "calories_consumed": 1050,
+        "calories_remaining": 550,
+        "protein_target_g": 80,
+        "protein_consumed_g": 42,
+        "protein_gap_g": 38,
+        "meals": []
+      }
+    }
+  },
+  "user_input": "练完了，今天强度很大，练后吃什么？",
+  "expected_intent": "post_workout_meal",
+  "expected_state_update": {
+    "training.status": "completed",
+    "training.actual_intensity": "high",
+    "training.post_workout_meal_status": "suggested"
+  },
+  "expected_reply_points": [
+    "不建议完全不吃",
+    "蛋白质",
+    "适量碳水",
+    "易消化"
+  ],
+  "forbidden_reply_points": [
+    "饿着",
+    "惩罚性运动",
+    "今天失败"
+  ]
+}

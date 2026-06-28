@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cycle_state.schema.json",
+  "title": "Fitness Cycle State",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "week_start_date", "workout_completed_count", "meal_logging_days", "over_budget_days", "recovery_success_count", "special_context_count", "possible_patterns", "weekly_wins", "next_week_focus"],
+  "properties": {
+    "version": { "type": "integer", "const": 1 },
+    "week_start_date": { "type": ["string", "null"] },
+    "workout_completed_count": { "type": "integer", "minimum": 0 },
+    "meal_logging_days": { "type": "integer", "minimum": 0 },
+    "over_budget_days": { "type": "integer", "minimum": 0 },
+    "recovery_success_count": { "type": "integer", "minimum": 0 },
+    "special_context_count": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    },
+    "possible_patterns": { "type": "array", "items": { "type": "string" } },
+    "weekly_wins": { "type": "array", "items": { "type": "string" } },
+    "next_week_focus": { "type": ["string", "null"] }
+  }
+}
